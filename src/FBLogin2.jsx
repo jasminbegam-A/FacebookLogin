@@ -35,12 +35,13 @@ const FacebookBusinessLogin = () => {
     FB.login(
       function (response) {
         console.log("Facebook Login Response:", response);
+       
         console.log("AuthResponse", response.authResponse);
+        console.log("AccessToken", response.authResponse.accessToken);
 
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
-          console.log("AccessToken:", accessToken);
-
+           console.log(accessToken)
           FB.api(
             "/me",
             { fields: "id,name,email", access_token: accessToken },
@@ -49,16 +50,15 @@ const FacebookBusinessLogin = () => {
               setUserData(userInfo);
             }
           );
-        } else {
-          console.error("User did not authorize the application.");
         }
       },
       {
-        scope: "public_profile,email",
-        auth_type: "rerequest",
+        config_id: "1121290476363268",
+        response_type: "code token",
+        override_default_response_type: true,
       }
     );
-  }
+  };
 
   return (
     <div>
