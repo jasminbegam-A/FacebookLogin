@@ -17,7 +17,6 @@ const FacebookBusinessLogin = () => {
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
 
-        
           fetch(
             `https://graph.facebook.com/me?fields=id,name,email&access_token=${accessToken}`
           )
@@ -32,6 +31,7 @@ const FacebookBusinessLogin = () => {
         }
       },
       {
+        config_id: "1121290476363268",
         scope: "public_profile,email",
         response_type: "code",
       }
