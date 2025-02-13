@@ -1,5 +1,5 @@
 //USING FRONTEND ONLY
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 
 const FacebookBusinessLogin = () => {
   const [userData, setUserData] = useState(null);
@@ -57,7 +57,6 @@ const FacebookBusinessLogin = () => {
       {
         config_id: "1121290476363268",
         scope: "public_profile,email",
-      
         auth_type: "rerequest",
       }
     );
