@@ -1,30 +1,30 @@
 //USING FRONTEND ONLY
-import React, {useEffect, useState } from "react";
+
+import React, { useEffect, useState } from "react";
 
 const FacebookBusinessLogin = () => {
   const [userData, setUserData] = useState(null);
 
-    useEffect(() => {
-      window.fbAsyncInit = function () {
-        FB.init({
-          appId: "2525589477642277",
-          cookie: true,
-          xfbml: true,
-          version: "v22.0",
-        });
-      };
+  useEffect(() => {
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: "2525589477642277",
+        cookie: true,
+        xfbml: true,
+        version: "v20.0",
+      });
+    };
 
-      (function (d, s, id) {
-        let js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
-    }, []);
-
+    (function (d, s, id) {
+      let js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  }, []);
 
   const handleLoginClick = () => {
     if (!window.FB) {
@@ -35,8 +35,6 @@ const FacebookBusinessLogin = () => {
     FB.login(
       function (response) {
         console.log("Facebook Login Response:", response);
-        console.log("AuthResponse", response.authResponse);
-        console.log("AccessToken", response.authResponse.code);
 
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
@@ -53,18 +51,15 @@ const FacebookBusinessLogin = () => {
       },
       {
         config_id: "1121290476363268",
-        auth_type:"rerequest",
+        response_type: "code",
         override_default_response_type: true,
       }
     );
-
   };
 
   return (
     <div>
-      <button className="login-button" onClick={handleLoginClick}>
-        <span>Login with Facebook (F)</span>
-      </button>
+      <button onClick={handleLoginClick}>Login with Facebook Business</button>
 
       {userData && (
         <div>
