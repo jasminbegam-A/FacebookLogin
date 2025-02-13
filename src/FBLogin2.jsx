@@ -41,25 +41,23 @@ const FacebookBusinessLogin = () => {
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
 
-          fetch(
-            `https://graph.facebook.com/me?fields=id,name,email&access_token=${accessToken}`
-          )
-            .then((response) => response.json())
-            .then((userInfo) => {
+          FB.api(
+            "/me",
+            { fields: "id,name,email", access_token: accessToken },
+            function (userInfo) {
               console.log("User Info:", userInfo);
               setUserData(userInfo);
-            })
-            .catch((error) => {
-              console.error("Error fetching user info:", error);
-            });
+            }
+          );
         }
       },
       {
         config_id: "1121290476363268",
-        scope: "public_profile,email",
-        auth_type: "rerequest",
+        auth_type:"rerequest",
+        override_default_response_type: true,
       }
     );
+
   };
 
   return (
