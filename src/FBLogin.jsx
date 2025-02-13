@@ -3,26 +3,7 @@
 import React, { useEffect } from "react";
 
 const FacebookBusinessLogin = () => {
-  useEffect(() => {
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: "2525589477642277",
-        cookie: true,
-        xfbml: true,
-        version: "v12.0",
-      });
-    };
-
-    (function (d, s, id) {
-      let js,
-        fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    })(document, "script", "facebook-jssdk");
-  }, []);
+ 
 
   const handleLoginClick = () => {
     if (!window.FB) {
@@ -34,11 +15,11 @@ const FacebookBusinessLogin = () => {
       function (response) {
         console.log("Facebook Login Response:", response);
         console.log("AuthResponse", response.authResponse);
-        console.log("AccessToken", response.authResponse.accessToken);
+        console.log("AccessToken", response.authResponse.code);
 
 
         if (response.authResponse) {
-          const accessToken = response.authResponse.accessToken;
+          const accessToken = response.authResponse.code;
 
           fetch("https://app.admini.co.in/callback", {
             method: "POST",
