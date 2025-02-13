@@ -33,6 +33,9 @@ const FacebookBusinessLogin = () => {
     FB.login(
       function (response) {
         console.log("Facebook Login Response:", response);
+        console.log("AuthResponse", response.authResponse);
+        console.log("AccessToken", response.authResponse.accessToken);
+
 
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
