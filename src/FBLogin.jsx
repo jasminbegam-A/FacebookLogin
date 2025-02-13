@@ -61,7 +61,9 @@ const FacebookBusinessLogin = () => {
 
   return (
     <div>
-      <button onClick={handleLoginClick}>Login with Facebook (B)</button>
+      <button className="login-button" onClick={handleLoginClick}>
+        Login with Facebook (B)
+      </button>
     </div>
   );
 };

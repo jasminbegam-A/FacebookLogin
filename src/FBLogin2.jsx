@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+//USING FRONTEND ONLY
+import React, { useState } from "react";
 
 const FacebookBusinessLogin = () => {
   const [userData, setUserData] = useState(null);
@@ -16,28 +17,30 @@ const FacebookBusinessLogin = () => {
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
 
-          FB.api(
-            "/me",
-            { fields: "id,name,email", access_token: accessToken },
-            function (userInfo) {
+        
+          fetch(
+            `https://graph.facebook.com/me?fields=id,name,email&access_token=${accessToken}`
+          )
+            .then((response) => response.json())
+            .then((userInfo) => {
               console.log("User Info:", userInfo);
               setUserData(userInfo);
-            }
-          );
+            })
+            .catch((error) => {
+              console.error("Error fetching user info:", error);
+            });
         }
       },
       {
         scope: "public_profile,email",
-        config_id: "1121290476363268",
         response_type: "code",
-        override_default_response_type: true,
       }
     );
   };
 
   return (
     <div>
-      <button onClick={handleLoginClick}>
+      <button className="login-button" onClick={handleLoginClick}>
         <span>Login with Facebook (F)</span>
       </button>
 
