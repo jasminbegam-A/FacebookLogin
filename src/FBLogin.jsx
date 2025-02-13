@@ -37,7 +37,7 @@ const FacebookBusinessLogin = () => {
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
 
-          fetch("backend-api", {
+          fetch("https://app.admini.co.in/callback", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
