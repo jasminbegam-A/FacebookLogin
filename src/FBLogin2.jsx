@@ -35,9 +35,12 @@ const FacebookBusinessLogin = () => {
     FB.login(
       function (response) {
         console.log("Facebook Login Response:", response);
+       
+        console.log("AuthResponse", response.authResponse);
+        console.log("AccessToken", response.authResponse.code);
 
         if (response.authResponse) {
-          const accessToken = response.authResponse.accessToken;
+          const accessToken = response.authResponse.code;
 
           FB.api(
             "/me",
@@ -59,7 +62,9 @@ const FacebookBusinessLogin = () => {
 
   return (
     <div>
-      <button onClick={handleLoginClick}>Login with Facebook Business</button>
+      <button onClick={handleLoginClick} className="login-button">
+        Login with Facebook Business
+      </button>
 
       {userData && (
         <div>
