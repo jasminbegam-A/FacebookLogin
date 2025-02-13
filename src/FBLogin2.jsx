@@ -50,13 +50,20 @@ const FacebookBusinessLogin = () => {
               setUserData(userInfo);
             }
           );
+        } else {
+          console.log("User cancelled login or not authorize")
         }
       },
+      
       {
         config_id: "1121290476363268",
         response_type: "code",
         override_default_response_type: true,
+        scope:"email,public_profile"
       }
+      
+      
+        
     );
   };
 
