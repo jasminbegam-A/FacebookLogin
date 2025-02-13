@@ -55,7 +55,7 @@ const FacebookBusinessLogin = () => {
       {
         config_id: "1121290476363268",
         response_type: "code token",
-       
+        override_default_response_type: true,
       }
     );
   };
