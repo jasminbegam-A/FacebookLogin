@@ -13,6 +13,8 @@ const FacebookBusinessLogin = () => {
     FB.login(
       function (response) {
         console.log("Facebook Login Response:", response);
+        console.log("AuthResponse", response.authResponse);
+        console.log("AccessToken", response.authResponse.code);
 
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
@@ -33,7 +35,8 @@ const FacebookBusinessLogin = () => {
       {
         config_id: "1121290476363268",
         scope: "public_profile,email",
-        response_type: "code",
+      
+        auth_type: "rerequest",
       }
     );
   };
