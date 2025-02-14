@@ -92,8 +92,9 @@
 // };
 
 // export default FacebookBusinessLogin;
+
 import React, { useState } from "react";
-import { FacebookLogin } from "@greatsumini/react-facebook-login";
+import FacebookLogin from "@greatsumini/react-facebook-login";
 
 const FacebookAuth = () => {
   const [userData, setUserData] = useState(null);
