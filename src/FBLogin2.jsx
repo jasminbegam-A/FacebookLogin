@@ -93,7 +93,7 @@
 
 // export default FacebookBusinessLogin;
 import React, { useState } from "react";
-import FacebookLogin from "react-facebook-login";
+import { FacebookLogin } from "@greatsumini/react-facebook-login";
 
 const FacebookAuth = () => {
   const [userData, setUserData] = useState(null);
@@ -107,10 +107,9 @@ const FacebookAuth = () => {
     <div>
       <FacebookLogin
         appId="2525589477642277"
-        autoLoad={false}
+        onSuccess={responseFacebook}
+        onFail={(error) => console.log("Login Failed:", error)}
         fields="name,email,picture"
-        callback={responseFacebook}
-        icon="fa-facebook"
       />
 
       {userData && (
@@ -130,3 +129,4 @@ const FacebookAuth = () => {
 };
 
 export default FacebookAuth;
+
